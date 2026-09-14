@@ -1,7 +1,7 @@
 
 
 
-public class Gridnode(){
+public class GridNode{
 	//Coordinate Fields
 	int x;
 	int y;
@@ -37,8 +37,9 @@ public class Gridnode(){
 	public boolean isChecked(){
 		return this.checked;
 	}
-	public boolean performCheck(){
+	public void  performCheck(){
 		this.checked = true;
+
 	}
 	public GridNode getNorth(){
 		return this.north;
