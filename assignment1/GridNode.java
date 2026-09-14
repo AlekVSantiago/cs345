@@ -5,6 +5,8 @@ public class Gridnode(){
 	//Coordinate Fields
 	int x;
 	int y;
+	//Boolean for checking
+	private boolean checked;
 	//Pointer Fields
 	private GridNode north;
 	private GridNode south;
@@ -14,6 +16,7 @@ public class Gridnode(){
 	GridNode(int x, int y){
 		this.x = x;
 		this.y = y;
+		this.checked = false;
 		this.north = null;
 		this.south = null;
 		this.east = null;
@@ -30,6 +33,12 @@ public class Gridnode(){
 	}
 	public void setWest(GridNode west){
 		this.west = west;
+	}
+	public boolean isChecked(){
+		return this.checked;
+	}
+	public boolean performCheck(){
+		this.checked = true;
 	}
 	public GridNode getNorth(){
 		return this.north;

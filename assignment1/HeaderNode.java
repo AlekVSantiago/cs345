@@ -1,7 +1,6 @@
 
 
 public class HeaderNode{
-
 	int value;
 	private HeaderNode nextHead;
 	private GridNode firstGrid;
