@@ -2,17 +2,21 @@
 
 
 public class GridNode{
+
 	//Coordinate Fields
-	int x;
-	int y;
+	private int x;
+	private int y;
+
 	//Boolean for checking
 	private boolean checked;
+
 	//Pointer Fields
 	private GridNode north;
 	private GridNode south;
 	private GridNode east;
 	private GridNode west;
 
+	//Regular Constructor
 	GridNode(int x, int y){
 		this.x = x;
 		this.y = y;
@@ -22,6 +26,8 @@ public class GridNode{
 		this.east = null;
 		this.west = null;
 	}
+
+
 	public void setNorth(GridNode north){
 		this.north = north;
 	}
@@ -34,12 +40,12 @@ public class GridNode{
 	public void setWest(GridNode west){
 		this.west = west;
 	}
+	public void  setCheck(boolean check){
+		this.checked = check;
+
+	}
 	public boolean isChecked(){
 		return this.checked;
-	}
-	public void  performCheck(){
-		this.checked = true;
-
 	}
 	public GridNode getNorth(){
 		return this.north;
@@ -64,6 +70,17 @@ public class GridNode{
 	}
 	public void setY(int y){
 		this.y = y;
+	}
+
+	public String toString(){
+		String result  = "";
+		result += "( " + x + "," + y + " )";
+		return result;
+
+	}
+	public String toStringOutput(){
+		return "poop";
+
 	}
 	
 	public boolean isEquals(GridNode compareNode){
