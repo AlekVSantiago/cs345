@@ -5,7 +5,7 @@ public class List{
 	//Fields
 	private GridNode currGrid;
 	private boolean rmo;
-	private int MAX_ROW;
+	private int MAX_ROWCOL;
 	private int incCheck;
 	private int incTraval;
 
@@ -17,12 +17,50 @@ public class List{
 	//Default contructor under the parameters of the regular prompt
 	List(){
 		this.gridMap = new HashMap<int, GridNode>();
-		this.currGrid = null;
+		this.currGrid = this.getOrCreate(50, 50);
+		this.currGrid.setCheck(true);
 		this.incCheck = 2;
 		this.incTravel = 1;
 		this.currHours = 0;
 		this.totalHours = 0;
+		this.MAX_ROWCOL = 100;
 
+	}
+	public boolean validTravel(GridNode node){
+		return ((currHours < 16 - (this.incCheck + this.incTravel))) && (!this.exist(node) || !node.isChecked());
+
+	}
+	public boolean validTeleport(GridNode node){
+
+		if(currHours < 16 - this.incCheck()){
+			return false;
+		}
+		if(!this.exist(node){
+			return true;
+		}
+
+		GridNode iNode = this.getOrCreate(node.getX(), node.getY());
+		if(iNode.getNorth() == null || !iNode.getNorth().isChecked(){
+				
+			return true;
+		}
+				
+		if(iNode.getEast() == null || !iNode.getEast().isChecked()){
+			return true;
+		}
+		if(iNode.getSouth() == null || !iNode.getSouth().isChecked(){
+			return true;
+		}
+		if(iNode.getWest() == null || !iNode.getWest().isChecked(){
+				
+			return true;
+			
+		}
+	
+		return false;
+	}
+	public GridNode getCurrGrid(){
+		return this.currGrid();
 	}
 	public int getIncCheck(){
 		return this.incCheck;
@@ -58,10 +96,39 @@ public class List{
 
 	public void performCheck(GridNode node){
 		node.setCheck(true);
+		this.currHours += this.incCheck;
+	}
+	public void travelNorth(){
+		this.currGrid = currGrid.getNorth();
+		this.currHours += this.incTravel;
+	}
+	public void travelEast(){
+		this.currGrid = currGrid.getEast();
+		this.currHours += this.incTravel;
+	}
+	public void travelSouth(){
+		this.currGrid = currGrid.getSouth{};
+		this.currHours += this.incTravel;
+	}
+	public void travelWest(){
+		this.currGrid = currGrid.getWest();
+		this.currHours += this.incTravel;
+	}
+	public void sleep(){
+		this.totalHours += this.currHours;
+		this.currHours = 0;
+	}
+	public static GridNode stringToNode(string input){
+		inputArr = input.split(" ");
+		int x = Integer.parseInt(inputArr[0]);
+		int y = Integer.parseInt(inputArr[1]);
+
+		return new GridNode(x, y);
+
 	}
 
 	public GridNode getOrCreate(int x, int y){
-
+		
 
 	}
 	
